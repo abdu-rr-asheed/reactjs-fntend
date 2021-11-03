@@ -34,7 +34,8 @@ const Laptop = () => {
       return (
         <div className="card my-2 me-4" style={{ width: "15rem" }} key={idx}>
           <img
-            src={`http://192.168.43.54:8000/${item.image}`}
+            // src={`http://192.168.43.54:8000/${item.image}`}
+            src={`http://192.168.42.64:8000/${item.image}`}
             loading="lazy"
             className="card-img-top"
             alt={item.name}
