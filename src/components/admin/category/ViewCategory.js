@@ -56,6 +56,13 @@ const ViewCategory = () => {
           <th scope="row">{item.id}</th>
           <th>{item.name}</th>
           <td>{item.slug}</td>
+          <td>
+            <img
+              src={`http://localhost:8000/${item.image}`}
+              alt={item.name}
+              width="100"
+            />
+          </td>
           <td>{item.status}</td>
           <td>
             <Link
@@ -95,12 +102,13 @@ const ViewCategory = () => {
         </div>
         <div className="card-body">
           <div className="table-responsive">
-            <table className="table table-bordered table-dark table-striped text-center">
+            <table className="table table-bordered table-dark table-striped text-center align-middle">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Slug</th>
+                  <th scope="col">image</th>
                   <th scope="col">Status</th>
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>

@@ -15,26 +15,31 @@ const Category = () => {
     status: "",
     error_list: [],
   });
+  const [picture, setPicture] = useState([]);
 
   const handleinput = (e) => {
     e.persist();
     setCategory({ ...categoryInput, [e.target.name]: e.target.value });
   };
 
+  const handleImage = (e) => {
+    setPicture({ image: e.target.files[0] });
+  };
+
   const submitCategory = (e) => {
     e.preventDefault();
 
-    const data = {
-      meta_title: categoryInput.meta_title,
-      meta_keywords: categoryInput.meta_keywords,
-      meta_description: categoryInput.meta_description,
-      slug: categoryInput.slug,
-      name: categoryInput.name,
-      description: categoryInput.description,
-      status: categoryInput.status,
-    };
+    const formData = new FormData();
+    formData.append("image", picture.image);
+    formData.append("meta_title", categoryInput.meta_title);
+    formData.append("meta_keywords", categoryInput.meta_keywords);
+    formData.append("meta_description", categoryInput.meta_description);
+    formData.append("slug", categoryInput.slug);
+    formData.append("name", categoryInput.name);
+    formData.append("description", categoryInput.description);
+    formData.append("status", categoryInput.status);
 
-    axios.post(`/api/store-category`, data).then((res) => {
+    axios.post(`/api/store-category`, formData).then((res) => {
       if (res.data.status === 200) {
         swal("Success", res.data.message, "success");
         setCategory({
@@ -146,17 +151,31 @@ const Category = () => {
                   </span>
                 </div>
 
-                <div className="form-group mb-3">
-                  <label>Description</label>
-                  <textarea
-                    name="description"
-                    onChange={handleinput}
-                    value={categoryInput.description}
-                    className="form-control"
-                  ></textarea>
-                  <span className="text-danger">
-                    {categoryInput.error_list.description}
-                  </span>
+                <div className="row">
+                  <div className="col-md-8 form-group mb-3">
+                    <label>Description</label>
+                    <textarea
+                      name="description"
+                      onChange={handleinput}
+                      value={categoryInput.description}
+                      className="form-control"
+                    ></textarea>
+                    <span className="text-danger">
+                      {categoryInput.error_list.description}
+                    </span>
+                  </div>
+                  <div className="col-md-4 form-group md-3">
+                    <label>Image</label>
+                    <input
+                      type="file"
+                      name="image"
+                      onChange={handleImage}
+                      className="form-control"
+                    />
+                    <span className="text-danger">
+                      {categoryInput.error_list.image}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="form-group mb-3">

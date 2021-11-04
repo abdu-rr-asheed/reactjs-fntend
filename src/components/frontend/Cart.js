@@ -126,7 +126,7 @@ const Cart = () => {
                   <td>{idx + 1}</td>
                   <td>
                     <img
-                      src={`http://192.168.43.54:8000/${item.product.image}`}
+                      src={`http://localhost:8000/${item.product.image}`}
                       alt={item.product.name}
                       width="80px"
                     />

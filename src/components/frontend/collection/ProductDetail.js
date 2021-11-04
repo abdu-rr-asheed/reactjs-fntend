@@ -135,7 +135,7 @@ const ProductDetail = (props) => {
       <div className="row">
         <div className="col-md-4 border-end">
           <img
-            src={`http://192.168.43.54:8000/${product.image}`}
+            src={`http://localhost:8000/${product.image}`}
             alt={product.name}
             className="w-100"
           />

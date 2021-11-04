@@ -41,6 +41,17 @@ const ViewCategory = () => {
           <div className="card">
             <div className="card-body">
               <Link
+                to={`/collection/${item.slug}`}
+                className="text-decoration-none"
+              >
+                <img
+                  src={`http://localhost:8000/${item.image}`}
+                  className="w-100"
+                  width="150"
+                  alt={item.name}
+                />
+              </Link>
+              <Link
                 to={`collection/${item.slug}`}
                 className="text-decoration-none text-center"
               >
