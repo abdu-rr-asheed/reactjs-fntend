@@ -7,15 +7,7 @@ const EditCategory = (props) => {
   const [loading, setLoading] = useState(true);
   const history = useHistory();
 
-  const [categoryInput, setCategory] = useState({
-    meta_keywords: "",
-    meta_description: "",
-    meta_title: "",
-    slug: "",
-    name: "",
-    description: "",
-    status: "",
-  });
+  const [categoryInput, setCategory] = useState([]);
   const [error, setError] = useState([]);
   const [picture, setPicture] = useState([]);
 
@@ -59,7 +51,7 @@ const EditCategory = (props) => {
     formData.append("description", categoryInput.description);
     formData.append("status", categoryInput.status);
 
-    axios.put(`/api/update-category/${category_id}`, formData).then((res) => {
+    axios.post(`/api/update-category/${category_id}`, formData).then((res) => {
       if (res.data.status === 200) {
         swal("Success", res.data.message, "success");
         history.push("/admin/view-category");
