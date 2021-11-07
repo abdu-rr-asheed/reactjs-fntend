@@ -22,6 +22,7 @@ const ProductDetail = (props) => {
         if (isMountered) {
           if (res.data.status === 200) {
             setProduct(res.data.product);
+            console.log(res.data.product2);
             setLoading(false);
           } else if (res.data.status === 404) {
             history.push("/collection");
@@ -135,7 +136,7 @@ const ProductDetail = (props) => {
       <div className="row">
         <div className="col-md-4 border-end">
           <img
-            src={`http://192.168.43.54:8000/${product.image}`}
+            src={`http://localhost:8000/${product.image}`}
             alt={product.name}
             className="w-100"
           />

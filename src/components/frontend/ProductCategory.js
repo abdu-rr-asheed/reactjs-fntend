@@ -1,25 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import imgfour from "../../assets/frontend/images/4.jpg";
-// import imgfv from "../../assets/frontend/images/5.jpg";
-// import imgsx from "../../assets/frontend/images/6.jpg";
-// import imgsvn from "../../assets/frontend/images/7.jpg";
 
-const Mobile = () => {
+const ProductCategory = (props) => {
   const [loading, setLoading] = useState(true);
   const [mobile, setMobile] = useState([]);
   const [mcategory, setMcategory] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/mobile`).then((res) => {
+    axios.get(`/api/fetchproduct/${props.slug}`).then((res) => {
       if (res.data.status === 200) {
-        setMobile(res.data.product_data.mobile);
-        setMcategory(res.data.product_data.m_category);
+        setMobile(res.data.product_data.product);
+        setMcategory(res.data.product_data.category);
         setLoading(false);
       }
     });
-  }, []);
+  }, [props.slug]);
 
   if (loading) {
     return (
@@ -39,7 +35,7 @@ const Mobile = () => {
         <div className="card my-2 me-4" style={{ width: "15rem" }} key={idx}>
           <img
             // src={`http://192.168.43.54:8000/${item.image}`}
-            src={`http://192.168.42.64:8000/${item.image}`}
+            src={`http://localhost:8000/${item.image}`}
             loading="lazy"
             className="card-img-top"
             alt={item.name}
@@ -77,4 +73,4 @@ const Mobile = () => {
   );
 };
 
-export default Mobile;
+export default ProductCategory;

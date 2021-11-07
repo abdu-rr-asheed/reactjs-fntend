@@ -1,16 +1,31 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Slider from "../../layouts/frontend/Slider";
-import Laptop from "./Laptop";
-import Mobile from "./Mobile";
+import ProductCategory from "./ProductCategory";
 
 const Home = () => {
   document.title = "E-Commerce";
+
+  const [category, setcategory] = useState([]);
+
+  useEffect(() => {
+    axios.get(`/api/getCategory`).then((res) => {
+      if (res.data.status === 200) {
+        setcategory(res.data.category);
+      }
+    });
+  }, []);
+
+  var category_HTML = "";
+  category_HTML = category.map((item) => {
+    return <ProductCategory key={item.id} slug={item.slug} />;
+  });
+
   return (
     <div>
       <div className="container-fluid m-0 p-0">
         <Slider />
-        <Mobile />
-        <Laptop />
+        {category_HTML}
       </div>
     </div>
   );

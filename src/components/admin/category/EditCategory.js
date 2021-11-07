@@ -9,6 +9,7 @@ const EditCategory = (props) => {
 
   const [categoryInput, setCategory] = useState([]);
   const [error, setError] = useState([]);
+  const [picture, setPicture] = useState([]);
 
   useEffect(() => {
     document.title = "Edit Category - Admin";
@@ -31,12 +32,25 @@ const EditCategory = (props) => {
     setCategory({ ...categoryInput, [e.target.name]: e.target.value });
   };
 
+  const handleImage = (e) => {
+    setPicture({ image: e.target.files[0] });
+  };
+
   const updateCategory = (e) => {
     e.preventDefault();
 
     const category_id = props.match.params.id;
-    const data = categoryInput;
-    axios.put(`/api/update-category/${category_id}`, data).then((res) => {
+    const formData = new FormData();
+    formData.append("image", picture.image);
+    formData.append("meta_title", categoryInput.meta_title);
+    formData.append("meta_keywords", categoryInput.meta_keywords);
+    formData.append("meta_description", categoryInput.meta_description);
+    formData.append("slug", categoryInput.slug);
+    formData.append("name", categoryInput.name);
+    formData.append("description", categoryInput.description);
+    formData.append("status", categoryInput.status);
+
+    axios.post(`/api/update-category/${category_id}`, formData).then((res) => {
       if (res.data.status === 200) {
         swal("Success", res.data.message, "success");
         history.push("/admin/view-category");
@@ -139,6 +153,36 @@ const EditCategory = (props) => {
                     className="form-control"
                   />
                   <span className="text-danger">{error.name}</span>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-4 form-group mb-3">
+                    <label>Description</label>
+                    <textarea
+                      name="description"
+                      onChange={handleinput}
+                      value={categoryInput.description}
+                      className="form-control"
+                    ></textarea>
+                    <span className="text-danger">{error.description}</span>
+                  </div>
+                  <div className="col-md-4 form-group md-3">
+                    <label>Image</label>
+                    <input
+                      type="file"
+                      name="image"
+                      onChange={handleImage}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="col-md-4 form-group md-3">
+                    <img
+                      src={`http://localhost:8000/${categoryInput.image}`}
+                      alt={categoryInput.name}
+                      loading="lazy"
+                      width="150"
+                    />
+                  </div>
                 </div>
 
                 <div className="form-group mb-3">

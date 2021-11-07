@@ -62,7 +62,7 @@ const ViewProduct = (props) => {
                 className="text-decoration-none"
               >
                 <img
-                  src={`http://192.168.43.54:8000/${item.image}`}
+                  src={`http://localhost:8000/${item.image}`}
                   className="w-100"
                   width="150"
                   alt={item.name}

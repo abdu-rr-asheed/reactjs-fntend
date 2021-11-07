@@ -40,7 +40,7 @@ const ViewProduct = () => {
           <td>{item.selling_price}</td>
           <td>
             <img
-              src={`http://192.168.43.54:8000/${item.image}`}
+              src={`http://localhost:8000/${item.image}`}
               alt={item.name}
               width="100"
             />
