@@ -1,21 +1,21 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-const Laptop = () => {
+const ProductCategory = (props) => {
   const [loading, setLoading] = useState(true);
   const [mobile, setMobile] = useState([]);
   const [mcategory, setMcategory] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/laptop`).then((res) => {
+    axios.get(`/api/fetchproduct/${props.slug}`).then((res) => {
       if (res.data.status === 200) {
-        setMobile(res.data.product_data.mobile);
-        setMcategory(res.data.product_data.m_category);
+        setMobile(res.data.product_data.product);
+        setMcategory(res.data.product_data.category);
         setLoading(false);
       }
     });
-  }, []);
+  }, [props.slug]);
 
   if (loading) {
     return (
@@ -34,6 +34,7 @@ const Laptop = () => {
       return (
         <div className="card my-2 me-4" style={{ width: "15rem" }} key={idx}>
           <img
+            // src={`http://192.168.43.54:8000/${item.image}`}
             src={`http://localhost:8000/${item.image}`}
             loading="lazy"
             className="card-img-top"
@@ -61,7 +62,7 @@ const Laptop = () => {
     <div className="container my-4">
       <nav className="navbar navbar-dark bg-dark">
         <Link className="navbar-brand mx-4" to="/">
-          <i className={mcategory.meta_title}></i>
+          <i className="fas fa-mobile-alt"></i>
           &nbsp; {mcategory.name}
         </Link>
       </nav>
@@ -72,4 +73,4 @@ const Laptop = () => {
   );
 };
 
-export default Laptop;
+export default ProductCategory;

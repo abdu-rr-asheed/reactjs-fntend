@@ -18,7 +18,6 @@ const EditCategory = (props) => {
     axios.get(`/api/edit-category/${category_id}`).then((res) => {
       if (res.data.status === 200) {
         setCategory(res.data.category);
-        console.log(res.data.category);
       } else {
         swal("error", res.data.message, "error");
         history.push("/admin/view-category");

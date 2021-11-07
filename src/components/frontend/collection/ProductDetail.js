@@ -22,6 +22,7 @@ const ProductDetail = (props) => {
         if (isMountered) {
           if (res.data.status === 200) {
             setProduct(res.data.product);
+            console.log(res.data.product2);
             setLoading(false);
           } else if (res.data.status === 404) {
             history.push("/collection");
