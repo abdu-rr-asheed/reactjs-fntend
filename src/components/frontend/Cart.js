@@ -126,7 +126,7 @@ const Cart = () => {
                   <td>{idx + 1}</td>
                   <td>
                     <img
-                      src={`http://localhost:8000/${item.product.image}`}
+                      src={`https://frozen-plains-70593.herokuapp.com/${item.product.image}`}
                       alt={item.product.name}
                       width="80px"
                     />

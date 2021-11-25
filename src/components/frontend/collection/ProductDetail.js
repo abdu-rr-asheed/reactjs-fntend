@@ -136,7 +136,7 @@ const ProductDetail = (props) => {
       <div className="row">
         <div className="col-md-4 border-end">
           <img
-            src={`http://localhost:8000/${product.image}`}
+            src={`https://frozen-plains-70593.herokuapp.com/${product.image}`}
             alt={product.name}
             className="w-100"
           />

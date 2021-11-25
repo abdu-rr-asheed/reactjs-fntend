@@ -40,7 +40,7 @@ const ViewProduct = () => {
           <td>{item.selling_price}</td>
           <td>
             <img
-              src={`http://localhost:8000/${item.image}`}
+              src={`https://frozen-plains-70593.herokuapp.com/${item.image}`}
               alt={item.name}
               width="100"
             />

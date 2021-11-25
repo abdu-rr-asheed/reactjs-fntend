@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
+import Logo from "./../../assets/frontend/images/YSFlogo.png"
 
 const Navbar = () => {
   const history = useHistory();
@@ -22,15 +23,18 @@ const Navbar = () => {
   var AuthButton = "";
   if (!localStorage.getItem("auth_token")) {
     AuthButton = (
-      <ul className="navbar-nav">
+      <ul className="navbar-nav reglog">
         <li className="nav-item">
           <Link className="nav-link" to="/login">
-            Login
+            Log
           </Link>
+        </li>
+        <li>
+          <Link className="nav-link" to="">/</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/register">
-            Register
+          Reg
           </Link>
         </li>
       </ul>
@@ -69,31 +73,14 @@ const Navbar = () => {
           </li>
         </ul>
       </li>
-
-      // <ul className="navbar-nav">
-      //   <li className="nav-item">
-      //     <button type="button" className="nav-link btn btn-sm text-white">
-      //       {localStorage.getItem("auth_name")}
-      //     </button>
-      //   </li>
-      //   <li className="nav-item">
-      //     <button
-      //       type="button"
-      //       onClick={LogoutSubmit}
-      //       className="nav-link btn btn-danger btn-sm text-white"
-      //     >
-      //       Logout
-      //     </button>
-      //   </li>
-      // </ul>
     );
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow">
       <div className="container">
-        <Link className="navbar-brand" to="#">
-          E-Commerce
+        <Link className="navbar-brand" to="/">
+          <img src={Logo} alt="YSFLogo" width="110px" />
         </Link>
         <button
           className="navbar-toggler"
@@ -107,7 +94,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 fs-4 iceland">
             <li className="nav-item">
               <NavLink className="nav-link" to="/">
                 Home
@@ -115,12 +102,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/collection">
-                Collection
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/cart">
-                Cart
+              Gallery
               </NavLink>
             </li>
             <li className="nav-item">
@@ -131,6 +113,11 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink className="nav-link" to="/contact">
                 Contact us
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/cart">
+                Cart
               </NavLink>
             </li>
             {AuthButton}

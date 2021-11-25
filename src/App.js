@@ -5,6 +5,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import "./assets/frontend/css/style.css"
 import Login from "./components/frontend/auth/Login";
 import Regtr from "./components/frontend/auth/Regtr";
 import AdminPrivateRoute from "./AdminPrivateRoute";
@@ -14,7 +15,8 @@ import PublicRoute from "./PublicRoute";
 
 // axios.defaults.baseURL = "http://192.168.43.54:8000";
 // axios.defaults.baseURL = "http://192.168.42.64:8000";
-axios.defaults.baseURL = "http://localhost:8000";
+// axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "https://frozen-plains-70593.herokuapp.com/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
 axios.defaults.headers.post["Accept"] = "application/json";
 axios.defaults.withCredentials = true;

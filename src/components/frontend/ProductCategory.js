@@ -35,7 +35,7 @@ const ProductCategory = (props) => {
         <div className="card my-2 me-4" style={{ width: "15rem" }} key={idx}>
           <img
             // src={`http://192.168.43.54:8000/${item.image}`}
-            src={`http://localhost:8000/${item.image}`}
+            src={`https://frozen-plains-70593.herokuapp.com/${item.image}`}
             loading="lazy"
             className="card-img-top"
             alt={item.name}

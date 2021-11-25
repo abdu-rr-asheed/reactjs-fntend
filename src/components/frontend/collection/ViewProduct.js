@@ -62,7 +62,7 @@ const ViewProduct = (props) => {
                 className="text-decoration-none"
               >
                 <img
-                  src={`http://localhost:8000/${item.image}`}
+                  src={`https://frozen-plains-70593.herokuapp.com/${item.image}`}
                   className="w-100"
                   width="150"
                   alt={item.name}

@@ -4,7 +4,7 @@ import Slider from "../../layouts/frontend/Slider";
 import ProductCategory from "./ProductCategory";
 
 const Home = () => {
-  document.title = "E-Commerce";
+  document.title = "YSF";
 
   const [category, setcategory] = useState([]);
 

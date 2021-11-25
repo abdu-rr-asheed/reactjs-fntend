@@ -348,7 +348,7 @@ const EditProduct = (props) => {
                   </div>
                   <div className="col-md-4 form-group md-3">
                     <img
-                      src={`http://localhost:8000/${productInput.image}`}
+                      src={`https://frozen-plains-70593.herokuapp.com/${productInput.image}`}
                       alt={productInput.name}
                       loading="lazy"
                       width="150"

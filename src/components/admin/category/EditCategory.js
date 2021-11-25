@@ -177,7 +177,7 @@ const EditCategory = (props) => {
                   </div>
                   <div className="col-md-4 form-group md-3">
                     <img
-                      src={`http://localhost:8000/${categoryInput.image}`}
+                      src={`https://frozen-plains-70593.herokuapp.com/${categoryInput.image}`}
                       alt={categoryInput.name}
                       loading="lazy"
                       width="150"
